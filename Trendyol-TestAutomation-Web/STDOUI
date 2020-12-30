@@ -1,0 +1,29 @@
+Feature: Trendyol buy product
+
+  Background:  [90m# TestCase.feature:3[0m
+
+  @Run @Chrome
+  Scenario: Check image loaded and product add to basket         [90m# TestCase.feature:7[0m
+    [32mGiven [0m[32mI go to [0m[32m[1mhttps://www.trendyol.com[0m[32m page[0m                  [90m# WebStep.GoToURL(String)[0m
+    [32mThen [0m[32mI url must be [0m[32m[1mhttps://www.trendyol.com/[0m                 [90m# WebStep.CheckUrl(String)[0m
+    [32mAnd [0m[32mI move mouse reset position[0m                              [90m# WebStep.ResetMousePosition()[0m
+    [32mAnd [0m[32mI click [0m[32m[1mwelcomePopup[0m[32m element if exist[0m                    [90m# WebStep.ClickElementExist(String)[0m
+    [32mWhen [0m[32mI mouse over [0m[32m[1mloginIcon[0m[32m element[0m                          [90m# WebStep.MouseOver(String)[0m
+    [32mAnd [0m[32mI click [0m[32m[1mmainLogin[0m[32m element[0m                                [90m# WebStep.Click(String)[0m
+    [32mWhen [0m[32mI login with[0m                                            [90m# WebStep.login(DataTable)[0m
+    [32mAnd [0m[32mI click [0m[32m[1mcloseNotificationPopup[0m[32m element if exist[0m          [90m# WebStep.ClickElementExist(String)[0m
+    [32mThen [0m[32mI see [0m[32m[1mHesabım[0m[32m text[0m                                      [90m# WebStep.seeText(String)[0m
+    [32mAnd [0m[32mI write text [0m[32m[1msamsung[0m[32m text area [0m[32m[1msearch[0m                    [90m# WebStep.SendKeys(String,String)[0m
+    #And I press ENTER key
+    #And I click search element
+    [32mAnd [0m[32mI wait [0m[32m[1m5[0m[32m second[0m                                          [90m# WebStep.WaitTime(int)[0m
+    [32mAnd [0m[32mI click [0m[32m[1mSamsung[0m[32m text[0m                                     [90m# WebStep.ClickText(String)[0m
+    [32mAnd [0m[32mI see [0m[32m[1mpageTitleSamsung[0m[32m element[0m                           [90m# WebStep.seeElement(String)[0m
+    # Trendyol Sayfa yapısına göre sayfa scroll edildikçe product yüklenecek şekilde tasarlandığından,
+    # 5. step  "Arama sonuçlarından 2. sayfaya tıklayacak ve açılan sayfada 2. sayfanın şu an gösterimde olduğunu onaylayacak." ignore edildi.
+    [32mAnd [0m[32mI get [0m[32m[1mthirdProduct[0m[32m element text and keep temp variable[0m   [90m# WebStep.getElementText(String)[0m
+    [32mAnd [0m[32mI click [0m[32m[1mthirdFavoriteButton[0m[32m element[0m                      [90m# WebStep.Click(String)[0m
+    [32mAnd [0m[32mI click [0m[32m[1mmyFavorite[0m[32m element[0m                               [90m# WebStep.Click(String)[0m
+    [32mAnd [0m[32mI compare [0m[32m[1mmyFavoriteProduct[0m[32m text with temp variable text[0m [90m# WebStep.getElementTextCompareTemp(String)[0m
+    [32mAnd [0m[32mI click [0m[32m[1mremoveMyFavorite[0m[32m element[0m                         [90m# WebStep.Click(String)[0m
+    [32mAnd [0m[32mI see [0m[32m[1mFavoriler Listeniz Henüz Boş[0m[32m text[0m                  [90m# WebStep.seeText(String)[0m
